@@ -11,13 +11,34 @@ void count();
 void countMoney();
 void countPolitics();
 void search();
+void Dog();
+void Barcelona();
+void countFootball();
+
+int main() {
+
+	menu();
+
+	system("pause");
+
+	return 0;
+
+}
 
 void menu() {
 	int num;
-	cout << "Enter the corresponding number" << endl;
-	cout << "1. Show tweets which mention the word 'Uber' \n2. Show tweets which mention the word 'Dreamworks' \n3. Show tweets which mention the word 'Paris'" << endl; 
-	cout << "4. Count total tweets \n5. Count tweets mentioning the word 'money' \n6. Count tweets mentioning the word 'Politics'"  << endl;
-	cout << "7. Custom search \n8. Show tweets which mention the word 'dog' \n9. " << endl;
+	cout << "\nEnter the corresponding number" << endl;
+	cout << "----------------------------" << endl;
+	cout << "Search by word:" << endl;
+	cout << "1. Uber \n2. Dreamworks \n3. Paris \n4. Dog \n5. Barcelona" << endl;
+	cout << "----------------------------" << endl;
+	cout << "Count tweets containg word:" << endl;
+	cout << "6. Money \n7. Politics \n8. Football" << endl;
+	cout << "----------------------------" << endl;
+	cout << "9. Count Total number of tweets" << endl;
+	cout << "----------------------------" << endl;
+	cout << "10. Custom search" << endl;
+	
 	cin >> num;
 	if (num == 1) {
 		uber();
@@ -29,16 +50,29 @@ void menu() {
 		paris();
 	}
 	else if (num == 4) {
-		count();
+		Dog();
 	}
 	else if (num == 5) {
-		countMoney();
+		Barcelona();
 	}
 	else if (num == 6) {
-		countPolitics();
+		countMoney();
 	}
 	else if (num == 7) {
+		countPolitics();
+	}
+	else if (num == 8) {
+		countFootball();
+	}
+	else if (num == 9) {
+		count();
+	}
+	else if (num == 10) {
 		search();
+	}
+	else {
+		cout << "\nInput not recognized - Please try again" << endl;
+		menu();
 	}
 
 }
@@ -70,7 +104,7 @@ void search() {
 			menu();
 		}
 		else {
-			cout << "Bye" << endl;
+			cout << "Thank you for using this API see you soon" << endl;
 		}
 
 
@@ -105,7 +139,7 @@ void countPolitics() {
 			menu();
 		}
 		else {
-			cout << "Bye" << endl;
+			cout << "Thank you for using this API see you soon" << endl;
 		}
 
 
@@ -141,7 +175,42 @@ void countMoney() {
 			menu();
 		}
 		else {
-			cout << "Bye" << endl;
+			cout << "Thank you for using this API see you soon" << endl;
+		}
+
+
+	}
+	else {
+		cout << "Error reading file" << endl;
+	}
+
+}
+void countFootball() {
+
+	string myData;
+	ifstream inFile;
+	int count = 0;
+	string back;
+	inFile.open("sampleTweets.csv");
+
+	if (inFile.good()) {
+		while (!inFile.eof()) {
+			getline(inFile, myData);
+			if (myData.find("football") <= myData.length()) {
+				cout << myData << endl;
+				count++;
+			}
+		}
+		cout << "There are " << count << " tweets which mention the word football" << endl;
+
+		inFile.close();
+		cout << "Do you want to search again?" << endl;
+		cin >> back;
+		if (back == "YES" | back == "yes" | back == "Yes") {
+			menu();
+		}
+		else {
+			cout << "Thank you for using this API see you soon" << endl;
 		}
 
 
@@ -178,7 +247,7 @@ void count() {
 			menu();
 		}
 		else {
-			cout << "Bye" << endl;
+			cout << "Thank you for using this API see you soon" << endl;
 		}
 
 	}
@@ -211,7 +280,7 @@ void paris() {
 			menu();
 		}
 		else {
-			cout << "Bye" << endl;
+			cout << "Thank you for using this API see you soon" << endl;
 		}
 
 
@@ -245,7 +314,7 @@ void dreamworks() {
 			menu();
 		}
 		else {
-			cout << "Bye" << endl;
+			cout << "Thank you for using this API see you soon" << endl;
 		}
 
 
@@ -279,7 +348,7 @@ void uber() {
 			menu();
 		}
 		else {
-			cout << "Bye" << endl;
+			cout << "Thank you for using this API see you soon" << endl;
 		}
 
 		
@@ -289,15 +358,75 @@ void uber() {
 	}
 }
 
+void Dog() {
+	string myData;
+	ifstream inFile;
+	int count = 0;
+	string back;
+	inFile.open("sampleTweets.csv");
 
-int main() {
+	if (inFile.good()) {
+		while (!inFile.eof()) {
+			getline(inFile, myData);
+			if (myData.find("Dog") <= myData.length()) {
+				cout << myData << endl;
+				count++;
+			}
+		}
 
-	menu();
 
-	system("pause");
-	
-	return 0;
+		inFile.close();
+		cout << "Do you want to search again?" << endl;
+		cin >> back;
+		if (back == "YES" | back == "yes" | back == "Yes") {
+			menu();
+		}
+		else {
+			cout << "Thank you for using this API see you soon" << endl;
+		}
 
+
+	}
+	else {
+		cout << "Error reading file" << endl;
+	}
 }
+
+void Barcelona() {
+	string myData;
+	ifstream inFile;
+	int count = 0;
+	string back;
+	inFile.open("sampleTweets.csv");
+
+	if (inFile.good()) {
+		while (!inFile.eof()) {
+			getline(inFile, myData);
+			if (myData.find("Barcelona") <= myData.length()) {
+				cout << myData << endl;
+				count++;
+			}
+		}
+
+
+		inFile.close();
+		cout << "Do you want to search again?" << endl;
+		cin >> back;
+		if (back == "YES" | back == "yes" | back == "Yes") {
+			menu();
+		}
+		else {
+			cout << "Thank you for using this API see you soon" << endl;
+		}
+
+
+	}
+	else {
+		cout << "Error reading file" << endl;
+	}
+}
+
+
+
 
 
